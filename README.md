@@ -10,7 +10,7 @@
 |---|---|
 | **GitHub** | เก็บไฟล์โปรแกรม |
 | **Supabase** | ฐานข้อมูล + ระบบชื่อผู้ใช้/รหัสผ่าน |
-| **Netlify** | เปิดเว็บให้ใช้งานจริง (ได้ลิงก์ เช่น `picu-xxx.netlify.app`) |
+| **Netlify หรือ Vercel** | เปิดเว็บให้ใช้งานจริง (ได้ลิงก์ เช่น `picu-xxx.vercel.app`) |
 
 > ⚠️ ตอนนี้เป็น **ช่วงทดลอง** ให้ใช้รหัสผู้ป่วย (เช่น P012) เท่านั้น ห้ามใส่ชื่อ-นามสกุลหรือ HN จริง
 > ก่อนใช้กับข้อมูลผู้ป่วยจริง ต้องขออนุญาตฝ่าย IT / ผู้รับผิดชอบข้อมูลส่วนบุคคล (PDPA) ของโรงพยาบาลก่อน
@@ -82,6 +82,18 @@
 5. เปิดลิงก์บนมือถือ › ล็อกอินด้วย `nurse001` และรหัสที่ตั้งในขั้นที่ 2
    - เพิ่มเป็นไอคอนบนหน้าจอ: Safari › แชร์ › **Add to Home Screen** / Chrome › ⋮ › **Add to Home screen**
 
+## ขั้นที่ 4 (แบบ Vercel) · เปิดเว็บจริง
+
+1. สมัครที่ https://vercel.com/signup › **Continue with GitHub**
+2. **Add New… › Project** › เลือก repo `picu-risk-check` › **Import**
+3. ตั้งค่า:
+   - Framework Preset: **Other**
+   - Build Command: **เว้นว่าง** (หรือเปิดสวิตช์ Override แล้วเว้นว่าง)
+   - Output Directory: **`.`**
+   - กด **Deploy**
+4. ได้ลิงก์ เช่น `https://picu-risk-check.vercel.app` (ลิงก์หลักนี้เปิดได้ทุกคน ส่วนลิงก์ยาว ๆ ที่มีรหัสต่อท้ายจะต้องล็อกอิน Vercel)
+5. แก้ไฟล์บน GitHub แล้ว Commit → Vercel อัปเดตเว็บให้อัตโนมัติ
+
 ## แก้ไขโปรแกรมภายหลัง
 
 แก้ไฟล์บน GitHub แล้ว Commit → Netlify อัปเดตเว็บให้อัตโนมัติภายใน ~1 นาที
@@ -106,5 +118,5 @@ js/store.js                           เชื่อมฐานข้อมู
 js/screens/*.js                       หน้าจอแต่ละหน้า
 supabase/schema.sql                   สร้างตาราง + กฎความปลอดภัย
 supabase/seed_test_data.sql           ข้อมูลทดลอง (ไม่บังคับ)
-netlify.toml                          ตั้งค่า Netlify
+netlify.toml / vercel.json           ตั้งค่า Netlify / Vercel
 ```
